@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Baru</title>
+</head>
+<body>
+    <form>
+    <div>
+        Nama Lengkap
+        <input type="text" name="" id="txNAMA">
+    </div>
+   
+    <div>
+        Email
+        <input type="text" name="" id="txEMAIL">
+    </div>
+
+    <div>
+        User name
+        <input type="text" name="" id="txUSERNAME">
+    </div>
+    <div></div>
+        Password
+        <input type="password" id="txPASS1">
+    </div>
+    <div>
+        verifikasi Password
+        <input type="password" id="txPASS2">
+    </div>
+    <div>
+        <button type="Button" onclick="StoreData()">Buat Data</button>
+    </div>
+</form>
+    <script>
+        function StoreData(){
+            let nm = document.getElementById("txNAMA").value;
+           let ema = document.getElementById("txEMAIL").value;
+           let usr = document.getElementById("txUSERNAME").value;
+           let p1 = document.getElementById("txPASS1").value;
+           let p2 = document.getElementById("txPASS2").value;
+           let params = "nama"+nm+"&email="+ema+"&username="+usr+"&pass1"+p1+"&pass2"+p2;
+           let cx = "https://webpro.ptov.my.id/api/curduser.php?aksi=store";
+           const jsHTTP = new XMLHttpRequest();
+           jsHTTP.open("POST",cx,true);
+           jsHTTP.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+           jsHTTP.send(params);
+
+           jsHTTP.onload = function(){
+                const data = JSON.parse(this.responseText);
+                if(dta.error==0){
+                    const myTimeout = setTimeout(window.location.replace="latihan01.html",5000);
+                }
+           }
+        }
+        
+    </script>
+</body>
+</html>
